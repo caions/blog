@@ -5,15 +5,20 @@ const handlebars  = require('express-handlebars');
 const admin = require('./routes/admin')
 //const mongoose = require('mongoose');
 const app = express();
+const path = require('path')
 
 //config 
-//body-parser
- app.use(bodyParser.urlencoded({ extended: true }))
- app.use(bodyParser.json())
+   //body-parser
+   app.use(bodyParser.urlencoded({ extended: true }))
+   app.use(bodyParser.json())
 
- //handlebars
- app.engine('handlebars', handlebars({defaultLayout:'main'}));
- app.set('view engine', 'handlebars');
+   //handlebars
+   app.engine('handlebars', handlebars({defaultLayout:'main'}));
+   app.set('view engine', 'handlebars');
+
+   //public
+   app.use(express.static(path.join(__dirname,"public")))
+
 
  //mongoose
  //em breve
