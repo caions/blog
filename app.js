@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser')
 const handlebars  = require('express-handlebars');
 const admin = require('./routes/admin')
-//const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const app = express();
 const path = require('path')
 
@@ -16,12 +16,11 @@ const path = require('path')
    app.engine('handlebars', handlebars({defaultLayout:'main'}));
    app.set('view engine', 'handlebars');
 
+   //mongoose
+   mongoose.connect('mongodb://localhost/blog', {useNewUrlParser: true});
+
    //public
    app.use(express.static(path.join(__dirname,"public")))
-
-
- //mongoose
- //em breve
 
  //rotas
     app.use('/admin',admin)
