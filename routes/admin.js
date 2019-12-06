@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const mongoose = require('mongoose')
-require("../models/categoria")
-const Categoria = mongoose.model("categorias")
+const mongoose = require('mongoose') //carrega o modulo monggose
+require("../models/categoria") // importa a tabela categoria da pasta models
+const Categoria = mongoose.model("categorias") // atribui a constante Categoria a tabela categorias
 
 router.get('/',(req,res)=>{
     res.render('admin/index')

@@ -2,7 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser')
 const handlebars  = require('express-handlebars');
-const admin = require('./routes/admin')
+const admin = require('./routes/admin');
 const mongoose = require('mongoose');
 const app = express();
 const path = require('path')
@@ -17,7 +17,7 @@ const path = require('path')
    app.set('view engine', 'handlebars');
 
    //mongoose
-   mongoose.connect('mongodb://localhost/blog', {useNewUrlParser: true});
+   mongoose.connect('mongodb://localhost/blog', {useNewUrlParser: true,useUnifiedTopology: true});
 
    //public
    app.use(express.static(path.join(__dirname,"public")))
@@ -26,4 +26,4 @@ const path = require('path')
     app.use('/admin',admin)
  //outros
 const PORT = 8083;
-app.listen(PORT,()=>console.log('Servidor rodando na porta'+PORT))
+app.listen(PORT,()=>console.log('Servidor rodando na porta '+PORT))
